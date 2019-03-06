@@ -103,7 +103,7 @@ public class Login extends HttpServlet {
 //        userDAO.checkUserBF(user_id, user_password);
         
 //        userDAO.checkUserBF(1613240105, "123456");
-        userServiceImpl.checkUserBF(1613240105, "123456");
+//        userServiceImpl.checkUserBF(1613240105, "123456");
 //        Boolean BF =
 //        		userDAO.checkUserBF(user_id, user_password);   
 //        System.out.println(userDAO);

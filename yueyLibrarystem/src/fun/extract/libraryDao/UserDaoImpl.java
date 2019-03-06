@@ -26,62 +26,6 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao{
 		}
 		
 	}
-	
-	public void save(User user) {
-		String sql = "insert into user_library values(?,?)";
-		this.getJdbcTemplate().update(sql, user.getUser_id(), user.getUser_name());
-	}
-
-	// 修改
-	public void update(User user) {
-		String sql = "update user_library set user_name = ? where user_id = ?";
-		this.getJdbcTemplate().update(sql, user.getUser_name(), user.getUser_id());
-	}
-
-	// 删除 根据id删除
-	public void delete(User user) {
-		String sql = "delete from user_library where user_id = ?";
-		this.getJdbcTemplate().update(sql,user.getUser_id());
-//		this.getJdbcTemplate().update(sql, user.getUser_id());
-	}
-
-	// 查询记录总和
-	public int count() {
-		String sql = "select count(*) from user_library";
-		return this.getJdbcTemplate().queryForInt(sql);
-	}
-
-	// 根据id 查询 name
-	public String findNameById(String user_id) {
-		String sql = "select user_name from user_library where user_id = ?";
-		// String.class返回值类型
-		return this.getJdbcTemplate().queryForObject(sql, String.class, user_id);
-	}
-
-	// 根据id查询 user对象
-	public User findById(String user_id) {
-		String sql = "select * from user_library where user_id= ?";
-		return this.getJdbcTemplate().queryForObject(sql, new UserRowMapper(),user_id);
-	}
-
-	// 查询所有user数据
-	public List<User> findAll() {
-		String sql = "select * from user_library";
-		return this.getJdbcTemplate().query(sql, new UserRowMapper());
-	}
-
-	
-//	public User checkUser(int id, String password) {
-//		// TODO Auto-generated method stub
-//		try {
-//			String sql = "select * from user_library where user_id = ? and user_password = ?";
-//			return this.getJdbcTemplate().queryForObject(sql, new Object[] {id,password}, new UserRowMapper());
-//		}catch (Exception e) {
-//			// TODO: handle exception
-//			System.out.println("erro");
-//			return null;
-//		}
-//	}
 	public Boolean checkUserBF(int user_id, String user_password) {
 //	public User checkUserBF(int id, String password) {
 		// TODO Auto-generated method stub
@@ -97,21 +41,17 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao{
 			
 			return BF;
 		}catch (Exception e) {
-			// TODO: handle exception
-//			System.out.println("001");
-//			return false;
-			
-//			 if (user2!=null) {
-//				 System.out.println(user2);
-//				}else{
-//					System.out.println("用户名或密码错误");
-//				}
-//			return null;
 			Boolean BF = false;
 //			System.err.println(e);
 			System.out.println("用户名或密码错误");
 			return BF;
 		}
 //		return null;
+	}
+
+	@Override
+	public void syshello() {
+		// TODO Auto-generated method stub
+		System.out.println("this is syshello() function");
 	}
 }
