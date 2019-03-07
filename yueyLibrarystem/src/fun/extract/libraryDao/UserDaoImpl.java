@@ -2,18 +2,27 @@ package fun.extract.libraryDao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-
+import org.springframework.stereotype.Repository;
+@Repository("userDao")
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao{
+	
+//	String BF2;
+//	public String getBF2() {
+//		return BF2;
+//	}
+//
+//	public void setBF2(String bF2) {
+//		BF2 = bF2;
+//	}
+
 	class UserRowMapper implements RowMapper<User>{
-
-
 		@Override
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-			// TODO Auto-generated method stub
 			User user = new User();
 			user.setUser_id(rs.getInt("user_id"));
 			user.setUser_name(rs.getString("user_name"));
@@ -23,35 +32,29 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao{
 			user.setUser_password(rs.getString("user_password"));
 			
 			return user;
-		}
-		
+		}	
 	}
-	public Boolean checkUserBF(int user_id, String user_password) {
-//	public User checkUserBF(int id, String password) {
-		// TODO Auto-generated method stub
+	Map<String, String> statusmap = new HashMap();
+	public void checkUserBF(int user_id, String user_password) {
+		
+		System.out.println("here is userDaoImpl:"+user_id+user_password);
 		try {
 			String sql = "select * from user_library where user_id = ? and user_password = ?";
-//			System.out.println(this);
-//			System.out.println("-------------------------");
-//			UserDAO Userdao = new UserDAO();
-//			System.out.println(Userdao.getJdbcTemplate().queryForObject(sql, new Object[] {id,password}, new UserRowMapper()));
 			this.getJdbcTemplate().queryForObject(sql, new Object[] {user_id,user_password}, new UserRowMapper());
-			Boolean BF = true;
-			System.out.println("用户名正确");
-			
-			return BF;
+//			Boolean BF = true;
+//			this.setBF2("TRUE");		
+			statusmap.put("BF", "登录成功");
+//			System.out.println("登录成功");			
+//			return BF;
 		}catch (Exception e) {
-			Boolean BF = false;
-//			System.err.println(e);
-			System.out.println("用户名或密码错误");
-			return BF;
-		}
-//		return null;
+//			Boolean BF = false;
+//			this.setBF2("FALSE");
+			statusmap.put("BF", "登录失败");
+//			System.out.println("用户名或密码错误");
+//			return BF;
+		}		
 	}
-
-	@Override
-	public void syshello() {
-		// TODO Auto-generated method stub
-		System.out.println("this is syshello() function");
+	public Map<String, String> loginStatus(){
+		return statusmap;
 	}
 }

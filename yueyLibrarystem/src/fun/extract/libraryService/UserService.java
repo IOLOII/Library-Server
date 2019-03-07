@@ -1,8 +1,8 @@
 package fun.extract.libraryService;
 
-import fun.extract.libraryDao.User;
+import java.util.Map;
 
 public interface UserService {
-	Boolean checkUserBF(int user_id, String user_password) ;
-	void syshello();
+	void  checkUserBF(int user_id, String user_password) ;
+	Map<String,String> loginStatus();
 }

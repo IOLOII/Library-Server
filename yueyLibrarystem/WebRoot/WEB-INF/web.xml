@@ -8,7 +8,21 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+	<!-- 配置spring    Begin --> 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	<!-- 配置spring    End --> 
+  <!--Spring 容器启动监听器    Begin -->
+  	<listener>
+		<description>spring监听器</description> 
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
+	</listener>
+  <!-- Spring 容器启动监听器    End -->  
 	<!-- 配置springmvc-servlet.xml dispatcher    Begin -->
+	<!--  Spring MVC 的Servlet，它将加载springmvc-servlet.xml 的配置文件，以启动Spring MVC模块-->
 	<servlet>
 	    <servlet-name>springmvc</servlet-name>
 	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -23,8 +37,24 @@
 	</servlet> 
 	<servlet-mapping>
 	    <servlet-name>springmvc</servlet-name>
-	    <url-pattern>*.zichun</url-pattern>
+	    <url-pattern>*.y</url-pattern>
 	    <!-- <url-pattern>*.action</url-pattern>  -->    
 	</servlet-mapping>
 	<!-- 配置springmvc-servlet.xml dispatcher    End -->
+	<!-- 配置字符集过滤器    Begin -->
+	<filter>
+		<description>字符集过滤器</description>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+		<description>字符集编码</description>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+		<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 配置字符集过滤器    End -->
 </web-app>

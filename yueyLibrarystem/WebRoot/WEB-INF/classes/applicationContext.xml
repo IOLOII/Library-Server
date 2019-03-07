@@ -5,11 +5,7 @@
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	<!-- 引入properties -->
-<!-- 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
-<!--           <property name="location" value="classpath:jdbc.properties"></property> -->
-<!-- 	</bean> -->
-<!-- <context:property-placeholder location="/jdbc.properties"/> -->
+
 	<!-- properties文件配置  引入 -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	<!-- scan the package and the sub package -->
@@ -24,10 +20,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="user" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>
-	<!-- 将连接池注入到 JdbcTemplate对象 -->
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
 	
 	<!-- 配置UserDAO-->
 	<bean id="userDao" class="fun.extract.libraryDao.UserDaoImpl">
@@ -35,13 +27,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
 	</bean> 	
 	
-	<bean id="userService" class="fun.extract.libraryService.UserServiceImpl">
-	      <property name="userDao" ref="userDao"></property>
-	</bean>
-	<!--
-	<bean id="login" class="fun.extract.libraryServlet.Login">
-	      <property name="userDAO" ref="userDAO"></property>
-	</bean>-->
-	
+	 <!--将连接池注入到 JdbcTemplate对象 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>	
+
 	
 </beans>
