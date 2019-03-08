@@ -1,12 +1,7 @@
 package fun.extract.libraryController;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.util.Map;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import fun.extract.libraryService.UserService;
+import fun.extract.libraryUtils.catchHtml.Rtest;
 
 @Controller
 @RequestMapping("/login")
@@ -53,4 +47,13 @@ public class loginController {
        outWrite.flush();
        outWrite.close();
     }
+	
+	@RequestMapping("/testCatch")
+	private void testCatch(HttpServletRequest request, HttpServletResponse response)  throws IOException {
+		// TODO Auto-generated method stub
+		ServletOutputStream out = response.getOutputStream();
+	    OutputStreamWriter outWrite = new OutputStreamWriter(out ,"UTF-8");
+		Rtest rt = new Rtest();
+		rt.catchHtml("https://cas.gzpyp.edu.cn","/tsg/zxgg/list_02.shtml");
+	}
 }
