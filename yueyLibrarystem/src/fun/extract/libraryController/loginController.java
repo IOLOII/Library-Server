@@ -48,12 +48,17 @@ public class loginController {
        outWrite.close();
     }
 	
-	@RequestMapping("/testCatch")
-	private void testCatch(HttpServletRequest request, HttpServletResponse response)  throws IOException {
+	@RequestMapping("/testCatch.action")
+	public void testCatch(HttpServletRequest request, HttpServletResponse response)  throws IOException {
 		// TODO Auto-generated method stub
 		ServletOutputStream out = response.getOutputStream();
 	    OutputStreamWriter outWrite = new OutputStreamWriter(out ,"UTF-8");
 		Rtest rt = new Rtest();
 		rt.catchHtml("https://cas.gzpyp.edu.cn","/tsg/zxgg/list_02.shtml");
+	}
+	
+	@RequestMapping("/readPdf")
+	public String readPdf(){
+		return "index.html";
 	}
 }
