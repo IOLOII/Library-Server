@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="yueyLibrarystem"
+  name="LibrarySystem"
   id="myeclipse.1551801236326"
   context-root="/yueyLibrarystem"
   j2ee-spec="5.0"
-  archive="yueyLibrarystem.war">
+  archive="LibrarySystem.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

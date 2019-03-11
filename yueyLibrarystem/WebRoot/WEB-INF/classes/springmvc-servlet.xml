@@ -12,8 +12,6 @@
     <mvc:default-servlet-handler /> 
     <!-- if you use annotation you must configure following setting -->
     <mvc:annotation-driven />     
-        <!--静态资源访问(缓存一周) -->
-<mvc:resources mapping="/resources/**/" location="/resources/"/> 
 
     <!-- configure the InternalResourceViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
@@ -27,6 +25,7 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
     	<property name="order" value="10" />
     	<property name="prefix" value="/html/" />
+    	<property name="suffix" value=".html" />
     	<property name="contentType" value="text/html;charset=UTF-8" />
     </bean>
 

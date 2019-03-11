@@ -9,17 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
 import fun.extract.libraryService.UserService;
-import fun.extract.libraryUtils.catchHtml.Rtest;
+import fun.extract.libraryUtils.catchHtml.CatchHtml;
 
 @Controller
-@RequestMapping("/login")
-public class loginController {
+//@RequestMapping("/login")
+public class LoginController {
 	@Autowired
-	private UserService userService;
-	
+	private UserService userService;	
 //	@RequestMapping(value = "/in" , method=RequestMethod.POST)
-	@RequestMapping(value = "/in" )
+//	@RequestMapping(value = "/in" )
+	@RequestMapping("/login")
     public void checkUserInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	String username = request.getParameter("username");
     	int user_id = Integer.parseInt(username.trim());
@@ -47,18 +50,4 @@ public class loginController {
        outWrite.flush();
        outWrite.close();
     }
-	
-	@RequestMapping("/testCatch.action")
-	public void testCatch(HttpServletRequest request, HttpServletResponse response)  throws IOException {
-		// TODO Auto-generated method stub
-		ServletOutputStream out = response.getOutputStream();
-	    OutputStreamWriter outWrite = new OutputStreamWriter(out ,"UTF-8");
-		Rtest rt = new Rtest();
-		rt.catchHtml("https://cas.gzpyp.edu.cn","/tsg/zxgg/list_02.shtml");
-	}
-	
-	@RequestMapping("/readPdf")
-	public String readPdf(){
-		return "index.html";
-	}
 }

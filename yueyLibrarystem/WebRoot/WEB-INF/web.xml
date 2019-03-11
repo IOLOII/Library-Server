@@ -1,60 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  <display-name></display-name>	
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name></display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
-	<!-- 配置spring    Begin --> 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
-	</context-param>
-	<!-- 配置spring    End --> 
-  <!--Spring 容器启动监听器    Begin -->
-  	<listener>
-		<description>spring监听器</description> 
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
-	</listener>
-  <!-- Spring 容器启动监听器    End -->  
-	<!-- 配置springmvc-servlet.xml dispatcher    Begin -->
-	<!--  Spring MVC 的Servlet，它将加载springmvc-servlet.xml 的配置文件，以启动Spring MVC模块-->
-	<servlet>
-	    <servlet-name>springmvc</servlet-name>
-	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	    <init-param>
-	          <param-name>contextConfigLocation</param-name>
-	          <param-value>classpath:springmvc-servlet.xml</param-value>
-	      </init-param>
-	      <!-- 配置springmvc什么时候启动，参数必须为整数 -->
-		  <!-- 如果为0或者大于0，则springMVC随着容器启动而启动 -->
-		  <!-- 如果小于0，则在第一次请求进来的时候启动 -->
-	      <load-on-startup>1</load-on-startup>
-	</servlet> 
-	<servlet-mapping>
-	    <servlet-name>springmvc</servlet-name>
-	    <url-pattern>*.action</url-pattern>
-	    <!-- <url-pattern>*.action</url-pattern>  -->    
-	</servlet-mapping>
-	<!-- 配置springmvc-servlet.xml dispatcher    End -->
-	<!-- 配置字符集过滤器    Begin -->
-	<filter>
-		<description>字符集过滤器</description>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-		<description>字符集编码</description>
-		<param-name>encoding</param-name>
-		<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-		<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<!-- 配置字符集过滤器    End -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <description>spring监听器</description>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc-servlet.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <description>字符集过滤器</description>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <description>字符集编码</description>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
