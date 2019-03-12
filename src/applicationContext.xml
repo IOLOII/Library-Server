@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- properties文件配置  引入 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<!-- scan the package and the sub package -->
+	<!-- 扫描相应的包-->
+	<context:component-scan base-package="fun.extract.libraryDao"/>
+    <context:component-scan base-package="fun.extract.libraryService"/>	 
+	<!-- 第三种 c3p0 连接池(这个bean需要手动填写提示class，不然可能找不到报错) -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+			<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>	
+	<!-- 配置UserDAO-->
+	<bean id="userDao" class="fun.extract.libraryDao.UserDaoImpl">
+		<!--注入jdbcTemplate -->
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>	
+	 <!--将连接池注入到 JdbcTemplate对象 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>	
+<!-- ************************************* ↑ 无问题配置************************************************************* -->
+	
+</beans>
