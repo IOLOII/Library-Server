@@ -34,7 +34,7 @@ public class MainController {
 //		/yueyLibrarystem/html/index.html
 //		return "/index";
 //		/yueyLibrarystem/html//index.html
-		return "/readPdf/readPdf";
+		return "readPdf";
 	}
 	
 	@RequestMapping("/test")

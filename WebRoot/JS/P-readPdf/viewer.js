@@ -27,7 +27,7 @@
 
 'use strict';
 
-var DEFAULT_URL = './html/catchHtml/service_test.pdf';
+var DEFAULT_URL = 'Relevant/P-readPdf/filesrc/service_test.pdf';
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
@@ -37,9 +37,9 @@ var SCALE_SELECT_PADDING = 22;
 var PAGE_NUMBER_LOADING_INDICATOR = 'visiblePageIsLoading';
 var DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
 
-PDFJS.imageResourcesPath = './html/catchHtml/images/';
-  PDFJS.workerSrc = './html/catchHtml/build/pdf.worker.js';
-  PDFJS.cMapUrl = './html/catchHtml/cmaps/';
+PDFJS.imageResourcesPath = 'Relevant/P-readPdf/images/';
+  PDFJS.workerSrc = 'JS/P-readPdf/pdf.worker.js';
+  PDFJS.cMapUrl = 'Relevant/P-readPdf/cmaps/';
   PDFJS.cMapPacked = true;
 
 var mozL10n = document.mozL10n || document.webL10n;

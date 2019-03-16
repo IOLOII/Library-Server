@@ -39367,7 +39367,7 @@ if (!PDFJS.workerSrc && typeof document !== 'undefined') {
     var pdfjsSrc = scriptTagContainer.lastChild.src;
     return pdfjsSrc && pdfjsSrc.replace(/\.js$/i, '.worker.js');
   })();
-  PDFJS.workerSrc = './readPdf/build/pdf.worker.js';
+  PDFJS.workerSrc = 'JS/P-readPdf/pdf.worker.js';
 }
 
 
