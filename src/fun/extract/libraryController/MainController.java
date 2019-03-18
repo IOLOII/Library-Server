@@ -41,7 +41,11 @@ public class MainController {
 	public ModelAndView testStaticSrc() {
 		// TODO Auto-generated method stub
 //		return "/testStaticSrc";
-		return  new ModelAndView(new RedirectView("http://www.baidu.com"));
+		return  new ModelAndView(new RedirectView("http://localhost:8099/test/016.pdf"));
 //		http://localhost:8080/yueyLibrarystem/testStaticSource.action
+	}
+	@RequestMapping("/testfile")
+	public void testfile() throws Exception{
+		 test.testWsdlConnection("http://localhost:8080/test/imgtest.jpg");
 	}
 }
