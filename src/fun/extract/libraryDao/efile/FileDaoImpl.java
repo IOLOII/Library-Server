@@ -1,11 +1,14 @@
-package fun.extract.libraryDao;
+package fun.extract.libraryDao.efile;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-
+import org.springframework.stereotype.Repository;
+@Repository("fileDao")
 public class FileDaoImpl extends JdbcDaoSupport implements FileDao{
 	class FileRowMapper implements RowMapper<File>{
 
@@ -22,9 +25,16 @@ public class FileDaoImpl extends JdbcDaoSupport implements FileDao{
 		}
 		
 	}
-	public String retnFileSrc(String file_name,String file_link) {
+	@Override
+	public void getFileLink(int file_id) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		try {
+			String sql = "select * from file where file_id = ?";
+			this.getJdbcTemplate().queryForObject(sql,new Object[] {file_id} ,new FileRowMapper());
+			System.out.println(this.getJdbcTemplate().queryForObject(sql,new Object[] {file_id} ,new FileRowMapper()));
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

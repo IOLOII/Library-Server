@@ -10,16 +10,6 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 @Repository("userDao")
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao{
-	
-//	String BF2;
-//	public String getBF2() {
-//		return BF2;
-//	}
-//
-//	public void setBF2(String bF2) {
-//		BF2 = bF2;
-//	}
-
 	class UserRowMapper implements RowMapper<User>{
 		@Override
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
