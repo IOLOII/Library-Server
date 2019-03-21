@@ -42,7 +42,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	</bean>
 	<bean id="filejdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="filedataSource"></property>
-	</bean>	
+	</bean>
+<!-- ************************************* ↑ 无问题配置************************************************************* -->
 </beans>
 
 

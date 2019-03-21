@@ -11,7 +11,6 @@ public class FileServiceImpl implements FileService{
 
 	@Override
 	public void getFileLink(int file_id) {
-		// TODO Auto-generated method stub
 		fileDao.getFileLink(file_id);
 	}
 }

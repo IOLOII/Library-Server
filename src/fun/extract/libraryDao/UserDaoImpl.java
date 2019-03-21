@@ -24,7 +24,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao{
 			return user;
 		}	
 	}
-	Map<String, String> statusmap = new HashMap();
+	static Map<String, String> statusmap = new HashMap();
 	public void checkUserBF(int user_id, String user_password) {
 		
 		System.out.println("here is userDaoImpl:"+user_id+user_password);

@@ -23,9 +23,12 @@ public class CatchHtml {
 				// TODO Auto-generated catch block
 				e.printStackTrace(); 
 			}
-			Elements divs1 = doc.select("div.TopBox").remove(); 
-			Elements divs2 = doc.select("div.Position").remove(); 
-			Elements divs3 = doc.select("div.pagediv").remove(); 	
+//			Elements divs1 = 
+					doc.select("div.TopBox").remove(); 
+//			Elements divs2 = 
+					doc.select("div.Position").remove(); 
+//			Elements divs3 =
+					doc.select("div.pagediv").remove(); 	
 			
 			Elements links = doc.select("a[href]").attr("target", "_parent"); 	
 			Elements linkspans = doc.select("span"); 

@@ -30,6 +30,11 @@ public class File {
 	public void setFile_size(String file_size) {
 		this.file_size = file_size;
 	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "FileInfo [文件号="+ file_id+"，文件名=" + file_name+"，文件大小=" + file_size +"，文件路径="+ file_link+"]";
+	}
 	
-//	private Date file_create_time;
+	
 }

@@ -39,9 +39,9 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jsoupjar/httpcore-4.4.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jsoupjar/jsoup-1.11.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/freemarker-2.3.23.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-log4j12-1.7.13.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-api-1.7.13.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-log4j12-1.7.13.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
